@@ -100,17 +100,28 @@ The library uses c++14 and requires
 to generate makefiles;
 - Eigen3,
 - CGAL >= 4.11.0,
-- Doxygen;
+- Doxygen
+- TBB;
 
-and cython, numpy, scipy, pytest, sphinx, matplotlib, sklearn, and pot to
-compile the GUDHI Python module.
+and
+
+- cython,
+- numpy,
+- scipy,
+- pytest,
+- sphinx,
+- matplotlib,
+- sklearn,
+- pot
+
+to compile the GUDHI Python module.
 
 I will be using [GCC](https://gcc.gnu.org/) in this setup.
 
 **Install compilation dependencies:**
 
 ```bash
-$ brew install gcc boost cmake eigen cgal doxygen
+$ brew install gcc boost cmake eigen cgal doxygen tbb
 ```
 
 **Install Python dependencies**:
@@ -137,7 +148,7 @@ $ wget -O- https://github.com/GUDHI/gudhi-devel/releases/download/tags%2Fgudhi-r
 $ cd gudhi/gudhi.3.1.1/
 $ mkdir build
 $ cd build/
-$ cmake -DPYTHON_EXECUTABLE=/usr/local/bin/python3 -DPython_ADDITIONAL_VERSIONS=3 ..
+$ cmake -DPYTHON_EXECUTABLE=/usr/local/bin/python3 -DPython_ADDITIONAL_VERSIONS=3 -DCMAKE_BUILD_TYPE=Release ..
 $ cd python
 $ python3 setup.py build_ext -j 4 --inplace
 ```
