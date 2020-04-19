@@ -84,7 +84,7 @@ for free.
 #### Step 1. Install Python 3.7 or greater if you haven't already
 
 Install python 3.7.x (since the rest will be using 3.7 in Anaconda).
-I will be using [homebrew](brew.sh)
+I will be using [homebrew](https://brew.sh)
 on my Mac which currently installs python 3.7.7.
 
 ```bash
@@ -142,16 +142,17 @@ $ cd python
 $ python3 setup.py build_ext -j 4 --inplace
 ```
 
-Now you can either add this to your `PYTHONPATH`
+Now you can either add this to your `PYTHONPATH` in your `.bash_profile`,
+`.zshrc`, etc:
 
 ```bash
-$ export PYTHONPATH='$PYTHONPATH:/path-to-gudhi/build/python'
+export PYTHONPATH='$PYTHONPATH:/path-to-gudhi/build/python'
 ```
 
 or install it to your python packages folder
 
 ```bash
-$ python3 setup.py install --prefix /Whetever/you/want/
+$ python3 setup.py install
 ```
 
 #### Step 4. Install Jupyter Interface
