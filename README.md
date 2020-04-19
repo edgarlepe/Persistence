@@ -1,10 +1,8 @@
 # Persistence
 
-2020 MATH 197 Persistence Group
+Spring 2020 MATH 197 Persistence Group at UC, Riverside.
 
 ## GUDHI Library Installation and Setup
-
----
 
 ### With Anaconda (Easiest)
 
@@ -83,4 +81,89 @@ for free.
 
 ### Without Anaconda
 
-Coming soon
+#### Step 1. Install Python 3.7 or greater if you haven't already
+
+Install python 3.7.x (since the rest will be using 3.7 in Anaconda).
+I will be using [homebrew](brew.sh)
+on my Mac which currently installs python 3.7.7.
+
+```bash
+$ brew install python
+```
+
+#### Step 2. Install GUDHI dependencies
+
+The library uses c++14 and requires
+- [Boost](https://www.boost.org/) ≥ 1.56.0,
+- [CMake](https://cmake.org/) ≥ 3.1,
+
+to generate makefiles;
+- Eigen3,
+- CGAL >= 4.11.0,
+- Doxygen;
+
+and cython, numpy, scipy, pytest, sphinx, matplotlib, sklearn, and pot to
+compile the GUDHI Python module.
+
+I will be using [GCC](https://gcc.gnu.org/) in this setup.
+
+**Install compilation dependencies:**
+
+```bash
+$ brew install gcc boost cmake eigen cgal doxygen
+```
+
+**Install Python dependencies**:
+
+```bash
+$ python3 -m pip install cython numpy scipy
+$ python3 -m pip install pytest matplotlib sphinx sklearn pot
+```
+
+#### Step 3. Install GUDHI
+
+**Get GUDHI source:**
+
+I will be using **wget** and **tar** do download and extract the source, but
+you are free to use whatever you feel most comfortable with.
+
+```bash
+$ wget -O- https://github.com/GUDHI/gudhi-devel/releases/download/tags%2Fgudhi-release-3.1.1/gudhi.3.1.1.tar.gz | tar xvz
+```
+
+**Compile Python module:**
+
+```bash
+$ cd gudhi/gudhi.3.1.1/
+$ mkdir build
+$ cd build/
+$ cmake -DPYTHON_EXECUTABLE=/usr/local/bin/python3 -DPython_ADDITIONAL_VERSIONS=3 ..
+$ cd python
+$ python3 setup.py build_ext -j 4 --inplace
+```
+
+Now you can either add this to your `PYTHONPATH`
+
+```bash
+$ export PYTHONPATH='$PYTHONPATH:/path-to-gudhi/build/python'
+```
+
+or install it to your python packages folder
+
+```bash
+$ python3 setup.py install --prefix /Whetever/you/want/
+```
+
+#### Step 4. Install Jupyter Interface
+
+Install JupyterLab
+
+```bash
+$ brew install jupyterlab
+```
+
+or
+
+```bash
+$ python3 -m pip install ipython jupyter
+```
